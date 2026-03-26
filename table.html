@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Selection</title>
+    <link rel="stylesheet" href="table.css">
+</head>
+<body>
+    <div class="container">
+        
+        <h2>RESERVE A TABLE</h2>
+        <p>หมายเลขโต๊ะ: สีเหลือง = ว่าง, สีเทา = ไม่ว่าง</p>
+        <p> 1 โต๊ะสำหรับ 4 ท่านเท่านั้น!</p>
+
+        <div class="table-layout">
+            <div class="table-row">
+                <button class="table available" data-table="A01">A01</button>
+                <button class="table unavailable" data-table="A02" disabled>A02</button>
+                <button class="table available" data-table="A03">A03</button>
+            </div>
+            <div class="table-row">
+                <button class="table available" data-table="B06">B06</button>
+                <button class="table available" data-table="B07">B07</button>
+                <button class="table unavailable" data-table="B08" disabled>B08</button>
+            </div>
+        </div>
+
+        <button id="confirm-reservation" disabled>Confirm Reservation</button>
+        <a href="home.html" class="go-home-link">Go Home</a>
+    </div>
+
+    <script>
+        let selectedTable = null;
+        const confirmButton = document.getElementById('confirm-reservation');
+    
+        document.querySelectorAll('.table.available').forEach(button => {
+            button.addEventListener('click', function() {
+                selectedTable = this.dataset.table;
+                localStorage.setItem('selectedTable', selectedTable);
+    
+                // ลบคลาสที่เลือกออกจากโต๊ะอื่น ๆ
+                document.querySelectorAll('.table').forEach(btn => btn.classList.remove('selected'));
+    
+                // เพิ่มคลาส 'selected' ให้กับโต๊ะที่ถูกเลือก
+                this.classList.add('selected');
+    
+                // เปิดใช้งานปุ่ม Confirm
+                confirmButton.disabled = false;
+            });
+        });
+    
+        confirmButton.addEventListener('click', function() {
+            if (selectedTable) {
+                window.location.href = 'form.html';
+            }
+        });
+        
+    </script>
+</body>
+</html>

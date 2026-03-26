@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation Form</title>
+    <link rel="stylesheet" href="table.css">
+</head>
+<body>
+    <div class="container">
+        <h2>กรอกข้อมูลการจองโต๊ะ</h2>
+        <form id="form">
+            <label>เลขโต๊ะ:</label>
+            <input type="text" id="tableID" readonly>
+
+            <label>ชื่อจอง:</label>
+            <input type="text" id="customerName" required>
+
+            <label>วันที่:</label>
+            <input type="date" id="date" required>
+
+            <label>เวลา:</label>
+            <input type="time" id="time" required>
+
+            <label>เบอร์โทร:</label>
+            <input type="tel" id="tel" required>
+
+            <button type="submit">บันทึกการจอง</button>
+        </form>
+        
+        <button id="goBack">กลับไปเลือกโต๊ะ</button>
+    </div>
+
+    <script>
+        const BASE_URL = "http://localhost:8080"; 
+       
+        document.addEventListener("DOMContentLoaded", async function () { 
+            const urlParams = new URLSearchParams(window.location.search);  
+            const tableID = urlParams.get("id"); // ดึงค่า id จาก URL
+
+            // ตั้งค่า tableID ถ้ามีค่าจาก localStorage
+            document.getElementById('tableID').value = localStorage.getItem('selectedTable') || '';
+
+            if (tableID) {
+                try {
+                    const response = await axios.get(`${BASE_URL}/restaurant/${tableID}`);  
+                    const restaurant = response.data;  
+    
+                    const formattedDate = new Date(restaurant.date).toISOString().split("T")[0];
+
+                    document.getElementById("tableID").value = restaurant.table_id;
+                    document.getElementById("customerName").value = restaurant.customer_name;
+                    document.getElementById("date").value = formattedDate;
+                    document.getElementById("time").value = restaurant.time;
+                    document.getElementById("tel").value = restaurant.tel;
+    
+                    document.querySelector("button[type='submit']").textContent = "อัปเดตการจอง";
+                } catch (error) {
+                    console.error("Error fetching restaurant data:", error);
+                    alert("❌ ไม่สามารถโหลดข้อมูลการจอง");
+                }
+            }
+    
+            // การกรอกฟอร์มและบันทึกข้อมูล
+            document.getElementById("form").addEventListener("submit", async function (event) {
+                event.preventDefault(); //ไม่ให้หน้าเว็บโหลดใหม่
+    
+                const restaurantData = {
+                    table_id: document.getElementById("tableID").value,
+                    customer_name: document.getElementById("customerName").value,
+                    date: document.getElementById("date").value,
+                    time: document.getElementById("time").value,
+                    tel: document.getElementById("tel").value
+                };
+    
+                try {
+            let response;
+            if (tableID) {
+                response = await axios.put(`${BASE_URL}/restaurant/${tableID}`, restaurantData);
+                // ไปที่ customer.html หลังจากอัปเดต
+                window.location.href = "customer.html";
+            } else {
+                response = await axios.post(`${BASE_URL}/restaurant`, restaurantData);
+                // หลังการสร้างการจอง ไปที่ table.html
+                window.location.href = "table.html";
+            }
+
+            alert(" การจองของคุณถูกบันทึกแล้ว!");
+            
+            // ล้างฟอร์มหลังจากบันทึก
+            document.getElementById("form").reset();
+
+        } catch (error) {
+            console.error("Error:", error);
+            alert(" ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ กรุณาลองใหม่!");
+        }
+    });
+});
+
+        // ปุ่มกลับไปที่หน้าเลือกโต๊ะ
+        document.getElementById("goBack").addEventListener("click", function () {
+            window.location.href = "table.html";
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>

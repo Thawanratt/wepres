@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="container">
+    <h2 id="formTitle">เข้าสู่ระบบ (Admin)</h2>
+
+    <!--LOGIN-->
+    <form id="loginForm">
+        <label>ชื่อผู้ใช้:</label>
+        <input type="text" id="username" required>
+
+        <label>รหัสผ่าน:</label>
+        <input type="password" id="password" required>
+
+        <button type="submit">เข้าสู่ระบบ</button>
+        <p class="switch-text">
+            ยังไม่มีบัญชี? <span onclick="showRegister()">สมัครสมาชิก</span>
+        </p>
+    </form>
+
+    <!--REGISTER FORM-->
+    <form id="registerForm" style="display:none;">
+        <label>ชื่อผู้ใช้:</label>
+        <input type="text" id="regUsername" required>
+
+        <label>รหัสผ่าน:</label>
+        <input type="password" id="regPassword" required>
+
+        <button type="submit">สมัครสมาชิก</button>
+        <p class="switch-text">
+            มีบัญชีแล้ว? <span onclick="showLogin()">เข้าสู่ระบบ</span>
+        </p>
+    </form>
+</div>
+    <script>
+// สลับฟอร์ม
+function showRegister() {
+    document.getElementById("loginForm").style.display = "none";
+    document.getElementById("registerForm").style.display = "block";
+    document.getElementById("formTitle").innerText = "สมัครสมาชิก";
+}
+
+function showLogin() {
+    document.getElementById("loginForm").style.display = "block";
+    document.getElementById("registerForm").style.display = "none";
+    document.getElementById("formTitle").innerText = "เข้าสู่ระบบ (Admin)";
+}
+
+// 🔐 LOGIN
+document.getElementById("loginForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    const storedUser = localStorage.getItem("user");
+    const storedPass = localStorage.getItem("pass");
+
+    if ((username === "admin" && password === "1234") || 
+        (username === storedUser && password === storedPass)) {
+        
+        localStorage.setItem("loggedIn", "true");
+        window.location.href = "customer.html";
+    } else {
+        alert("ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง");
+    }
+});
+
+// 📝 REGISTER
+document.getElementById("registerForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const regUser = document.getElementById("regUsername").value;
+    const regPass = document.getElementById("regPassword").value;
+
+    localStorage.setItem("user", regUser);
+    localStorage.setItem("pass", regPass);
+
+    alert("สมัครสมาชิกสำเร็จ!");
+    showLogin();
+});
+</script>

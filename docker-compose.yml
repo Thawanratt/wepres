@@ -1,0 +1,43 @@
+
+services:
+  db_restaurant:
+    image: mysql:8.0
+    platform: linux/amd64
+    container_name: mysql_db_restaurant
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: restaurantdb
+    ports:
+      - "9906:3306" # ใช้พอร์ต 9906 สำหรับการเข้าถึง MySQL จากเครื่องโฮสต์
+    volumes:
+      - mysql_restaurant_data:/var/lib/mysql
+    networks:
+      - restaurant_network
+    restart: always
+
+  phpmyadmin_restaurant:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: phpmyadmin_restaurant
+    platform: linux/amd64
+    environment:
+      PMA_HOST: db_restaurant
+      PMA_PORT: 3306 # พอร์ตที่ MySQL ใช้ภายในคอนเทนเนอร์
+      PMA_USER: root
+      PMA_PASSWORD: root
+    ports:
+      - "9091:80"  # พอร์ตสำหรับเข้าถึง phpMyAdmin
+    depends_on:
+      - db_restaurant
+    networks:
+      - restaurant_network
+    restart: always
+
+
+networks:
+  restaurant_network:
+    driver: bridge
+
+volumes:
+  mysql_restaurant_data:
+    driver: local

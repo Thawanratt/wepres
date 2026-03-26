@@ -1,0 +1,89 @@
+/* กำหนดฟอนต์เริ่มต้นให้กับทุกองค์ประกอบของหน้าเว็บ */
+* {
+    font-family: "Arial", sans-serif;
+}
+/* สไตล์สำหรับ container เพื่อให้ข้อความใน .header-back อยู่กลาง */
+.container {
+    display: flex;
+    flex-direction: column; /* ให้เนื้อหาเรียงตามแนวตั้ง */
+    justify-content: center; /* จัดให้อยู่ตรงกลางในแนวตั้ง */
+    align-items: center; /* จัดให้อยู่ตรงกลางในแนวนอน */
+    padding: 20px;
+}
+
+.header-back {
+    font-size: 24px; /* ขนาดตัวอักษร */
+    font-weight: bold; /* ขีดเส้นตัวอักษรให้หนา */
+    color: #2c3e50; /* สีของข้อความ */
+}
+//* ปรับสไตล์ลิงก์ Logout */
+.logout-container {
+    width: 100%;
+    text-align: left;
+    padding: 10px 20px;
+}
+
+a.logout {
+    display: inline-block;
+    padding: 10px 16px;
+    background: #e76f51; /* สีส้มแดง */
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+a.logout:hover {
+    background: #c0392b;
+    transform: scale(1.05);
+}
+
+/* ตั้งค่าตารางให้เต็มความกว้างของ container และไม่มีเส้นขอบซ้อนกัน */
+table {
+    width: 100%; /* กำหนดให้ตารางกว้างเต็มพื้นที่ของ container */
+    border-collapse: collapse; /* รวมเส้นขอบของเซลล์ให้เป็นเส้นเดียวกัน */
+    margin-top: 20px; /* กำหนดระยะห่างด้านบนของตาราง */
+}
+
+/* กำหนดรูปแบบของเซลล์ในตาราง (ทั้งหัวข้อและข้อมูล) */
+table th, table td {
+    padding: 10px; /* เพิ่มช่องว่างภายในเซลล์เพื่อให้ข้อมูลไม่ติดขอบ */
+    border: 1px solid #ddd; /* กำหนดเส้นขอบของเซลล์ให้เป็นสีเทาอ่อน */
+    text-align: center; /* จัดให้ข้อความอยู่ตรงกลางของเซลล์ */
+}
+
+/* กำหนดสไตล์เฉพาะสำหรับหัวข้อของตาราง */
+table th {
+    background-color: rgb(250,160,130); /* ตั้งค่าสีพื้นหลังของหัวคอลัมน์เป็นสีเทาอ่อน */
+}
+
+/* ตั้งค่าปุ่มทั่วไปให้มีระยะห่างและขนาดที่เหมาะสม */
+button {
+    padding: 8px 12px; /* ปรับขนาดของปุ่ม */
+    margin: 5px; /* กำหนดระยะห่างระหว่างปุ่ม */
+    cursor: pointer; /* ทำให้เคอร์เซอร์เป็นรูปมือเมื่อโฮเวอร์ */
+    border-radius: 5px; /* ทำให้มีมุมโค้ง */
+}
+
+/* สไตล์ปุ่มแก้ไข */
+.btn-edit {
+    background-color: #4CAF50; /* ใช้สีเขียว */
+    color: white; /* กำหนดให้ตัวอักษรเป็นสีขาว */
+    border: none; /* ไม่มีเส้นขอบ */
+}
+.btn-edit:hover {
+    background-color: #1e8449;
+    transform: scale(1.05);
+}
+
+/* สไตล์ปุ่มลบ */
+.btn-delete {
+    background-color: #f44336; /* ใช้สีแดง */
+    color: white; /* กำหนดให้ตัวอักษรเป็นสีขาว */
+    border: none; /* ไม่มีเส้นขอบ */
+}
+.btn-delete:hover {
+    background-color: #a93226;
+    transform: scale(1.05);
+}

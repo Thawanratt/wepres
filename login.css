@@ -1,0 +1,92 @@
+/* ฟอนต์ */
+@import url('https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arvo', serif;
+}
+
+/* Body */
+body {
+    background-color: #1e1e1e;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* กล่อง */
+.container {
+    background-color: #2c2c2c;
+    padding: 30px;
+    border-radius: 10px;
+    width: 350px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    transition: 0.3s;
+}
+
+.container:hover {
+    transform: translateY(-5px);
+}
+
+/* หัวข้อ */
+h2 {
+    color: #f4a261;
+    margin-bottom: 15px;
+}
+
+/* input */
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+}
+
+/* ปุ่ม */
+button {
+    width: 100%;
+    padding: 10px;
+    background: #f4a261;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #e76f51;
+}
+
+/* 🔁 สลับฟอร์ม */
+.switch-text {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+.switch-text span {
+    color: #f4a261;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.switch-text span:hover {
+    color: #e76f51;
+    text-decoration: underline;
+}
+
+/* animation */
+form {
+    transition: 0.3s ease;
+}

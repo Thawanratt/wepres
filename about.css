@@ -1,0 +1,156 @@
+/* Global Styles */
+@import url('https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+/* ปรับให้ทุกส่วนของเว็บไซต์ใช้ฟอนต์เดียวกัน */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arvo', serif;  /* ใช้ฟอนต์ Arvo ทั่วทั้งเว็บไซต์ */
+}
+
+/* Body */
+body {
+    background-color: #f8f8f8;
+    color: #333;
+    font-family: 'Arvo', serif; /* ใช้ฟอนต์ Arvo สำหรับ body */
+}
+
+/* Navbar */
+nav {
+    background-color: #36454f;
+    padding: 1rem;
+}
+
+.nav-con {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+.logo a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+.menu {
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+.menu li {
+    margin: 0 1rem;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+}
+
+.menu .active {
+    border-bottom: 2px solid gold;
+}
+
+/* Hero Section - ส่วนหัวของหน้าเว็บไซต์ */
+.about-hero {
+    max-width: 100%;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.about-hero img {
+    width: 100%;
+    height: 50vh;
+    object-fit: cover;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* About Section - เกี่ยวกับร้าน */
+.about-content {
+    max-width: 1140px;
+    margin: 50px auto;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text h1 {
+    font-size: 3rem;
+    color: rgb(250, 160, 130);
+    text-align: center;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.about-text h2 {
+    font-size: 2rem;
+    color: #c0392b;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Chefs Section - ทีมเชฟ */
+.chefs {
+    background-color: #fff;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.chef-list {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.chef {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 250px;
+}
+
+.chef img {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+/* Footer - ส่วนท้ายเว็บไซต์ */
+footer {
+    background-color: #36454f;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.footer-container {
+    max-width: 1140px;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+.footer-info h3, .footer-hours h3 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    color: gold;
+}
+
+.footer-info a {
+    color: gold;
+    text-decoration: none;
+}

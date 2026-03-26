@@ -1,0 +1,217 @@
+/* Global Styles */
+@import url('https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+/* ปรับให้ทุกส่วนของเว็บไซต์ใช้ฟอนต์เดียวกัน */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arvo', serif;  /* ใช้ฟอนต์ Arvo ทั่วทั้งเว็บไซต์ */
+}
+
+/* Body */
+body {
+    background-color: #f8f8f8;
+    color: #333;
+    font-family: 'Arvo', serif; /* ใช้ฟอนต์ Arvo สำหรับ body */
+}
+
+/* Navbar */
+nav {
+    background: linear-gradient(90deg, #2c3e50, #34495e); /* การใช้ gradient สร้างแถบนำทางให้ดูทันสมัย */
+    padding: 1rem; /* เว้นระยะห่างภายในแถบนำทาง */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* เงาบางๆ สำหรับแถบนำทาง */
+    position: sticky; /* ทำให้แถบนำทางติดกับด้านบนเมื่อเลื่อนหน้า */
+    top: 0; /* ให้แถบนำทางอยู่ที่ด้านบนของหน้า */
+    z-index: 1000; /* ทำให้แถบนำทางอยู่เหนือองค์ประกอบอื่นๆ */
+}
+
+.nav-con {
+    display: flex; /* ใช้ Flexbox สำหรับการจัดเรียงในแนวนอน */
+    justify-content: space-between; /* กระจายองค์ประกอบให้ห่างกัน */
+    align-items: center; /* จัดให้ทุกๆ องค์ประกอบอยู่กลางแนวตั้ง */
+    max-width: 1140px; /* กำหนดขนาดสูงสุดของคอนเทนเนอร์ */
+    margin: 0 auto; /* จัดกลางหน้า */
+}
+
+.logo a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: normal; /* เปลี่ยนเป็นปกติ (ไม่ตัวหนา) */
+}
+
+
+.logo a:hover {
+    transform: scale(1.1); /* ขยายขนาดของลิงก์เมื่อ hover */
+}
+
+.menu {
+    display: flex; /* ใช้ Flexbox สำหรับเมนู */
+    list-style: none; /* ลบสัญลักษณ์รายการ */
+    align-items: center; /* จัดให้อองค์ประกอบอยู่กลางแนวตั้ง */
+}
+
+.menu li {
+    margin: 0 1rem; /* เพิ่มระยะห่างระหว่างเมนูแต่ละรายการ */
+}
+
+.menu a {
+    color: white; /* กำหนดสีของลิงก์ */
+    text-decoration: none; /* ลบการขีดเส้นใต้จากลิงก์ */
+    font-size: 1.1rem; /* กำหนดขนาดตัวอักษร */
+    transition: color 0.3s ease-in-out; /* เพิ่มการเปลี่ยนสีอย่างนุ่มนวล */
+}
+
+.menu a:hover {
+    color: gold; /* เปลี่ยนสีลิงก์เป็นทองเมื่อ hover */
+}
+
+.menu .active {
+    border-bottom: 2px solid gold; /* เพิ่มเส้นใต้เมื่อเมนูเลือก */
+}
+
+/* Hero Section */
+/* Hero Section */
+.menu-hero {
+    max-width: 100%; /* ปรับให้ขยายเต็มความกว้าง */
+    margin: 0 auto; /* จัดให้อยู่กลาง */
+    position: relative; /* สำหรับการใช้การควบคุมตำแหน่งในส่วนของพื้นหลัง */
+    overflow: hidden; /* ซ่อนส่วนที่เกินออกมาจาก container */
+}
+
+.menu-hero img {
+    width: 100%; /* ให้รูปภาพยืดตามความกว้างของ container */
+    height: 50vh; /* เปลี่ยนความสูงของภาพให้เต็มครึ่งหน้าจอ */
+    object-fit: cover; /* ให้รูปขยายเต็มพื้นที่โดยไม่ผิดสัดส่วน */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* เพิ่มเงาให้รูปภาพ */
+    transition: transform 0.3s ease-in-out; /* เพิ่มการเคลื่อนไหว */
+}
+
+/* Footer Menu Hero */
+.footer-menu-hero {
+    display: flex;
+    justify-content: space-around; /* กระจายแต่ละส่วนให้ห่างกัน */
+    flex-wrap: wrap; /* ให้ปรับขนาดเมื่อหน้าจอเล็ก */
+    max-width: 1100px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+/* เพิ่ม hover effect ให้กับ footer menu items */
+.footer-menu-hero a {
+    color: white; /* สีของลิงค์ */
+    text-decoration: none; /* ลบขีดเส้นใต้ */
+    font-size: 1.2rem; /* ขนาดตัวอักษร */
+    transition: color 0.3s ease; /* การเคลื่อนไหวเมื่อเปลี่ยนสี */
+}
+
+/* Menu Content */
+.menu-content {
+    max-width: 1140px; /* กำหนดความกว้างสูงสุด */
+    margin: 50px auto; /* เว้นระยะห่างบนล่าง */
+    text-align: center; /* จัดกลางข้อความ */
+}
+
+.menu-content h2 {
+    font-size: 2.5rem; /* ขนาดตัวอักษร */
+    color: #c0392b; /* สีแดงเข้ม */
+    margin-bottom: 20px; /* เว้นระยะห่างด้านล่าง */
+    text-transform: uppercase; /* ตัวอักษรเป็นตัวพิมพ์ใหญ่ทั้งหมด */
+    letter-spacing: 2px; /* เว้นระยะห่างระหว่างตัวอักษร */
+}
+
+/* Menu Grid */
+.menu-list {
+    display: flex; /* ใช้ Flexbox */
+    justify-content: center; /* จัดให้อยู่กลาง */
+    gap: 30px; /* เพิ่มช่องว่างระหว่างเมนู */
+    flex-wrap: wrap; /* รองรับการยืดหยุ่น */
+    align-items: stretch; /* จัดให้เท่ากัน */
+    padding: 20px; /* เพิ่มระยะห่าง */
+}
+
+/* Menu Item */
+.menu-item {
+    background-color: white; /* พื้นหลังสีขาว */
+    padding: 25px; /* เพิ่ม padding รอบๆ */
+    border-radius: 10px; /* มุมโค้ง */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* เงาบางๆ */
+    width: 280px; /* กำหนดขนาดให้เหมาะสม */
+    text-align: center; /* จัดข้อความให้กลาง */
+    display: flex; /* ใช้ Flexbox */
+    flex-direction: column; /* จัดเรียงในแนวตั้ง */
+    justify-content: space-between; /* จัดเรียงช่องว่างให้เหมาะสม */
+    min-height: 360px; /* กำหนดความสูงขั้นต่ำ */
+    margin: 10px; /* เพิ่มระยะห่างรอบๆ */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* เพิ่มเอฟเฟ็กต์ */
+}
+
+.menu-item:hover {
+    transform: translateY(-8px); /* ทำให้เลื่อนขึ้นเมื่อ hover */
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3); /* เพิ่มเงาเมื่อ hover */
+}
+
+.menu-item img {
+    width: 100%; /* ขยายภาพให้เต็มกล่อง */
+    border-radius: 10px; /* มุมโค้งของภาพ */
+    margin-bottom: 10px; /* เว้นระยะห่างจากข้อความ */
+    transition: transform 0.3s ease-in-out; /* เพิ่มเอฟเฟ็กต์ให้ภาพ */
+}
+
+.menu-item img:hover {
+    transform: scale(1.05); /* ขยายภาพเมื่อ hover */
+}
+
+.menu-item h3 {
+    font-size: 1.5rem; /* ขนาดตัวอักษร */
+    margin-bottom: 5px; /* เว้นระยะห่าง */
+    font-weight: bold; /* ตัวหนา */
+    color: #2c3e50; /* สีเทาเข้ม */
+}
+
+.menu-item p {
+    font-size: 1rem; /* ขนาดตัวอักษร */
+    color: #555; /* สีเทาอ่อน */
+    flex-grow: 1; /* ให้เนื้อหาขยายเต็มที่ */
+    margin-bottom: 10px; /* เว้นระยะห่างด้านล่าง */
+}
+
+.menu-item span {
+    font-size: 1.3rem; /* ขนาดตัวอักษร */
+    font-weight: bold; /* ตัวหนา */
+    color: #e74c3c; /* สีแดงสด */
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(90deg, #2c3e50, #34495e); /* การใช้ gradient */
+    color: white; /* สีขาว */
+    text-align: center; /* จัดข้อความกลาง */
+    padding: 20px 0; /* เพิ่มพื้นที่ภายใน */
+}
+
+.footer-container {
+    max-width: 1140px; /* กำหนดความกว้างสูงสุด */
+    margin: auto; /* จัดกลาง */
+    display: flex; /* ใช้ Flexbox */
+    justify-content: space-around; /* กระจายส่วนต่างๆ */
+    padding: 10px; /* เพิ่มพื้นที่ภายใน */
+    flex-wrap: wrap; /* รองรับการยืดหยุ่น */
+}
+
+.footer-info h3, .footer-hours h3 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    color: gold;
+}
+
+.footer-info a {
+    color: gold; /* สีทอง */
+    text-decoration: none; /* ลบขีดเส้นใต้ */
+    transition: color 0.3s ease-in-out; /* เพิ่มเอฟเฟ็กต์การเปลี่ยนสี */
+}
+
+.footer-info a:hover {
+    color: white; /* เปลี่ยนสีเมื่อ hover */
+}
